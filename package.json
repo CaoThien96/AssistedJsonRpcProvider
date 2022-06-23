@@ -1,0 +1,23 @@
+{
+    "name": "assisted-json-rpc-provider",
+    "version": "0.2.0",
+    "dependencies": {
+        "async-task-throttle-on-response": "^1.0.1",
+        "ethers": "^5.5.3",
+        "lodash": "^4.17.21",
+        "node-fetch": "2"
+    },
+    "devDependencies": {
+        "mocha": "^6.2.2"
+    },
+    "scripts": {
+        "quick-test": "node test/quick-start/quick-start.js",
+        "test": "mocha --recursive --timeout 20000 'test/**/*.spec.js'"
+    },
+    "main": "libs/index.js",
+    "description": "A library to wrap method getLogs can use scan api or rpc request",
+    "directories": {
+        "libs": "libs"
+    },
+    "license": "UNLICENSED"
+}

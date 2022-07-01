@@ -1,8 +1,7 @@
 import { mergeTwoUniqSortedLogs, translateFilter } from './utils'
-import fetch from 'node-fetch';
 import _ from 'lodash'
 import AsyncTaskThrottle from "async-task-throttle-on-response"
-import {  providers, utils } from 'ethers';
+import { providers, utils } from 'ethers';
 import standardizeStartConfiguration from './validator';
 import { Log } from './types'
 
@@ -20,6 +19,7 @@ class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
             url: 'https://api.etherscan.io/api',
             maxResults: 1000,
             apiKeys: [] as string[],
+            fetch // lib make http get request
         }
     ) {
         super();
@@ -30,7 +30,7 @@ class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
         }
         this.etherscanConfig = validConfig;
         this.queues = this.etherscanConfig.apiKeys.map((apiKey: string) => {
-            const queue: any = AsyncTaskThrottle.create(fetch, validConfig.rateLimitCount, validConfig.rateLimitDuration)
+            const queue: any = AsyncTaskThrottle.create(this.etherscanConfig.fetch, validConfig.rateLimitCount, validConfig.rateLimitDuration)
             queue.apiKey = apiKey
             return queue
         })

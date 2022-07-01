@@ -9,7 +9,8 @@ function standardizeStartConfiguration(config: any) {
         'rateLimitDuration',
         'url',
         'maxResults',
-        'apiKeys'
+        'apiKeys',
+        'fetch'
     ]
 
     _validateRangeThreshold(config.rangeThreshold)

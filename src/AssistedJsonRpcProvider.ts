@@ -19,7 +19,7 @@ class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
             url: 'https://api.etherscan.io/api',
             maxResults: 1000,
             apiKeys: [] as string[],
-            fetch // lib make http get request
+            fetch: async (_: string) => []
         }
     ) {
         super(provider.connection.url);
@@ -74,7 +74,7 @@ class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
                 const queue = this.getQueue()
                 const urlApiKey = url + `&apikey=${queue.apiKey}`
 
-                const res = await queue(urlApiKey).then((res: any) => res.json());
+                const res = await queue(urlApiKey).then((data: any) => data);
 
                 if (Array.isArray(res.result)) {
                     res.result.forEach((log: any) => {

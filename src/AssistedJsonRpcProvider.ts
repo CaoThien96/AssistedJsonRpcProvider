@@ -22,7 +22,7 @@ class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
             fetch // lib make http get request
         }
     ) {
-        super();
+        super(provider.connection.url);
         this.provider = provider;
         let validConfig = standardizeStartConfiguration(etherscanConfig)
         if (!validConfig.apiKeys?.length) {

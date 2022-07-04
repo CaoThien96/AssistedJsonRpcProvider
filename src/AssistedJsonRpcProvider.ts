@@ -7,6 +7,7 @@ import { Log } from './types'
 
 // const DefaultAPIKey = 'YD1424ACBTAZBRJWEIHAPHFZMT69MZXBBI'
 class AssistedJsonRpcProvider extends providers.JsonRpcProvider {
+    name = "AssistedJsonRpcProvider"
     provider: providers.JsonRpcProvider
     etherscanConfig: any
     queues: any[]
